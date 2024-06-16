@@ -1,52 +1,82 @@
--- CREATE Table
+-- -- CREATE Table
 
-CREATE TABLE account(
-	user_id SERIAL PRIMARY KEY,
-	username VARCHAR(50) UNIQUE NOT NULL,
-	password VARCHAR(50) NOT NULL,
-	email VARCHAR(250) UNIQUE NOT NULL,
-	created_on TIMESTAMP NOT NULL,
-	last_login TIMESTAMP
-);
+-- CREATE TABLE account(
+-- 	user_id SERIAL PRIMARY KEY,
+-- 	username VARCHAR(50) UNIQUE NOT NULL,
+-- 	password VARCHAR(50) NOT NULL,
+-- 	email VARCHAR(250) UNIQUE NOT NULL,
+-- 	created_on TIMESTAMP NOT NULL,
+-- 	last_login TIMESTAMP
+-- );
 
-CREATE TABLE job(
-	job_id SERIAL PRIMARY KEY,
-	job_name VARCHAR(200) UNIQUE NOT NULL
-);
+-- CREATE TABLE job(
+-- 	job_id SERIAL PRIMARY KEY,
+-- 	job_name VARCHAR(200) UNIQUE NOT NULL
+-- );
 
-CREATE TABLE account_job(
-	user_id INTEGER REFERENCES account(user_id),
-	job_id INTEGER REFERENCES job(job_id),
-	hire_date TIMESTAMP
-);
+-- CREATE TABLE account_job(
+-- 	user_id INTEGER REFERENCES account(user_id),
+-- 	job_id INTEGER REFERENCES job(job_id),
+-- 	hire_date TIMESTAMP
+-- );
 
--- INSERT rows
+-- -- INSERT rows
 
-INSERT INTO account(username, password, email, created_on)
-VALUES ('Jose', 'password', 'jose@email.com', CURRENT_TIMESTAMP);
+-- INSERT INTO account(username, password, email, created_on)
+-- VALUES ('Jose', 'password', 'jose@email.com', CURRENT_TIMESTAMP);
 
-INSERT INTO job(job_name)
-VALUES ('Astronaut');
+-- INSERT INTO job(job_name)
+-- VALUES ('Astronaut');
 
-INSERT INTO job(job_name)
-VALUES ('President');
+-- INSERT INTO job(job_name)
+-- VALUES ('President');
 
-INSERT INTO account_job(user_id, job_id, hire_date)
-VALUES (1, 1, CURRENT_TIMESTAMP);
+-- INSERT INTO account_job(user_id, job_id, hire_date)
+-- VALUES (1, 1, CURRENT_TIMESTAMP);
 
--- UPDATE
+-- -- UPDATE
 
-UPDATE account 
-SET last_login = CURRENT_TIMESTAMP;
+-- UPDATE account 
+-- SET last_login = CURRENT_TIMESTAMP;
 
-UPDATE account
-SET last_login = created_on;
+-- UPDATE account
+-- SET last_login = created_on;
 
-UPDATE account_job
-SET hire_date = account.created_on
-FROM account
-WHERE account_job.user_id = account.user_id;
+-- UPDATE account_job
+-- SET hire_date = account.created_on
+-- FROM account
+-- WHERE account_job.user_id = account.user_id;
 
-UPDATE account
-SET last_login = CURRENT_TIMESTAMP
-RETURNING email, created_on, last_login
+-- UPDATE account
+-- SET last_login = CURRENT_TIMESTAMP
+-- RETURNING email, created_on, last_login
+
+
+-- -- DELETE
+-- DELETE FROM job
+-- WHERE job_name = 'Cowboy'
+-- RETURNING job_id, job_name;
+
+
+
+-- Create new table
+-- CREATE TABLE information(
+-- info_id SERIAL PRIMARY KEY,
+-- title VARCHAR(500) NOT null,
+-- person VARCHAR(50) NOT null UNIQUE);
+
+-- ALTER
+
+-- ALTER TABLE information
+-- RENAME TO new_info;
+
+-- ALTER TABLE new_info
+-- RENAME COLUMN person TO people
+
+-- ALTER TABLE new_info
+-- ALTER COLUMN people DROP NOT null;
+
+-- INSERT INTO new_info(title)
+-- VALUES('some new title');
+
+SELECT * FROM new_info
