@@ -33,6 +33,7 @@ SUM(CASE rental_rate
 END) AS premium
 FROM film;
 
+-- CASE challenge task
 
 SELECT 
 SUM(CASE rating
@@ -48,3 +49,8 @@ SUM(CASE rating
    ELSE 0
 END) AS pg_13_film_num
 FROM film;
+
+-- COALESCE
+
+SELECT item, (price - COALESCE(discount, 0))
+AS final_price FROM product;
