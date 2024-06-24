@@ -32,3 +32,19 @@ SUM(CASE rental_rate
    ELSE 0
 END) AS premium
 FROM film;
+
+
+SELECT 
+SUM(CASE rating
+  WHEN 'R' THEN 1
+  ELSE 0
+END) AS r_film_num,
+SUM(CASE rating
+   WHEN 'PG' THEN 1
+   ELSE 0
+END) AS pg_film_num,
+SUM(CASE rating
+   WHEN 'PG-13' THEN 1
+   ELSE 0
+END) AS pg_13_film_num
+FROM film;
