@@ -50,7 +50,17 @@ SUM(CASE rating
 END) AS pg_13_film_num
 FROM film;
 
+
 -- COALESCE
 
 SELECT item, (price - COALESCE(discount, 0))
 AS final_price FROM product;
+
+
+-- CAST
+
+SELECT CAST('5' AS INTEGER) AS new_int;
+SELECT '10'::INTEGER;
+
+SELECT CHAR_LENGTH(CAST(inventory_id AS VARCHAR)) FROM rental;
+
