@@ -112,3 +112,14 @@ ON customer.address_id = address.address_id;
 DROP VIEW IF EXISTS customer_info;
 
 ALTER VIEW customer_info RENAME TO c_info;
+
+
+Import and Export
+
+CREATE TABLE simple(
+a INTEGER,
+b INTEGER,
+c INTEGER
+);
+
+SELECT * FROM simple;
